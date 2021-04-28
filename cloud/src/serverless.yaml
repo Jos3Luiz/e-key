@@ -1,0 +1,69 @@
+service: e-key
+frameworkVersion: '2'
+
+custom:    
+  plugins:
+    - serverless-webpack
+    - serverless-offline
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-east-1
+  stage: ${opt:stage}
+  apiGateway:
+    minimumCompressionSize: 1024
+    shouldStartNameWithService: true
+
+  environment:
+    TABLE_NAME: "devices"
+    
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+       - "dynamodb:*"
+      Resource: 
+       - "*"
+
+functions:
+  getStatus:
+    handler: lambdaHandler.getStatus_handler
+    events:
+      - http:
+          path: /getStatus
+          method: get
+          cors: true
+
+
+
+  listDevices:
+    handler: lambdaHandler.listDevices_handler
+    events:
+      - http:
+          path: /listDevices
+          method: get
+          cors: true
+
+  register:
+    handler: lambdaHandler.register_handler
+    events:
+      - http:
+          path: /register
+          method: post
+          cors: true
+
+  remove:
+    handler: lambdaHandler.remove_handler
+    events:
+      - http:
+          path: /remove
+          method: post
+          cors: true
+
+  setStatus:
+    handler: lambdaHandler.setStatus_handler
+    events:
+      - http:
+          path: /setStatus
+          method: post
+          cors: true
