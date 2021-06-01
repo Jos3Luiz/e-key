@@ -1,18 +1,14 @@
 import React from 'react';
-import DataBases from '../pages/dataBases';
+
 import Logs from '../pages/logs';
-import Users from '../pages/users';
+import Whitelist from '../pages/whitelist';
 import Zero from '../pages/zero';
 
 const Main = ({page}) => {
   let a = (<div></div>);
-  if (page ==='dataBase' )
+  if (page ==='Whitelist' )
   {
-    a= (<DataBases />)
-  }
-  if (page ==='users' )
-  {
-    a = (<Users />);
+    a = (<Whitelist />);
   }
   if (page ==='logs' )
   {

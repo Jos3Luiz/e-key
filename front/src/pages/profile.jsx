@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#a73', //seria legal botar aleatório
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -72,12 +72,12 @@ const Profile = () => {
 
   const conta = 'Teste123'
   const pass = '*******'
-
+    //no Avatar seria legal colocar as duas primeiras letras de 'conta'
   return (
     <Container component="main" maxWidth="xs" className={classes.root}>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          Logo
+          T
         </Avatar>
         
         <Typography component="h1" variant="h4">

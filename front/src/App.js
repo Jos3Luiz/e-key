@@ -16,11 +16,11 @@ function App() {
         main: '#074585',
       },
       secondary:{
-        main: '#BF4040',
+        main: '#BBB',
       },
       background:{
         default: '#444',
-        paper: '#888',
+        paper: '#BBB',
       }
 
     }

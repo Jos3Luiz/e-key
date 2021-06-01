@@ -1,7 +1,7 @@
-import { AppBar, Button, IconButton, makeStyles, Toolbar } from '@material-ui/core';
+import { AppBar, Button, Fab, IconButton, makeStyles, Toolbar } from '@material-ui/core';
 import React from 'react';
 import clsx from 'clsx';
-import { AccountCircle, ExitToApp, Menu } from '@material-ui/icons';
+import { AccountCircle, ExitToApp, LockOutlined, Menu } from '@material-ui/icons';
 
 const drawerWidth = 240;
 
@@ -28,10 +28,6 @@ const useStyles = makeStyles((theme) => ({
     hide: {
       display: 'none',
     },
-    logo: {
-      height: 30,
-      border: 'none',
-    },
     grow: {
       flexGrow: 1,
     },
@@ -40,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
       border: 'none',
       height: 10,
     },
+    logo: {
+      margin: theme.spacing(0, 5, 0),
+    }
 
 }));
 
@@ -70,14 +69,15 @@ const TopBar = ({open,handleDrawerOpen,handleDrawerClose,goDashboard,handleExit,
           <Menu />
         </IconButton>
 
-        <Button 
-          variant="outlined"
-          color='inherit'
-          startIcon= {<img src="/images/logo.png" alt="logo" className={classes.logo} />}
+        <Fab 
+          fullWidth
+          variant="contained"
+          color="secondary"
           className={classes.logo}
           onClick={goDashboard}
           >
-        </Button>
+          <LockOutlined/>
+        </Fab>
         
         
         <div className={classes.grow} />

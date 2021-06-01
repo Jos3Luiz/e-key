@@ -118,7 +118,7 @@ const Register = () => {
             <ArrowBack />
           </Fab>
         <Typography component="h1" variant="h5">
-          Register in SCRUDA
+          Registre-se no E-Key
         </Typography>
         <form className={classes.form} noValidate>
           <TextField

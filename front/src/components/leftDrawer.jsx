@@ -46,8 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 const LeftDrawer = ({
-  open,handleDrawerOpen,handleDrawerClose,handleDataBases,
-  handleUsers,handleLogs}) => {
+  open,handleDrawerOpen,handleDrawerClose,handleWhitelist,handleLogs}) => {
 
     const classes = useStyles();
     const theme = useTheme();
@@ -74,25 +73,10 @@ const LeftDrawer = ({
       </div>
       <Divider />
       <List>
-        <ListItem button classes = {{root: classes.listItem}} >
-          <ListItemIcon
-            onClick = {handleDataBases}
-          >
-            {<Storage />}
-          </ListItemIcon>
-
-          <ListItemText
-            classes={{
-              primary: classes.listItemText,
-            }}
-            primary={'Data Bases'} 
-            onClick={handleDataBases}
-          />
-        </ListItem>
 
         <ListItem button classes = {{root: classes.listItem}}>
           <ListItemIcon
-            onClick = {handleUsers}
+            onClick = {handleWhitelist}
           >
             {<People />}
           </ListItemIcon>
@@ -102,7 +86,7 @@ const LeftDrawer = ({
               primary: classes.listItemText,
             }}
             primary={'Users'} 
-            onClick = {handleUsers}
+            onClick = {handleWhitelist}
           />
         </ListItem>
 

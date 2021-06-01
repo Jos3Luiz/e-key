@@ -45,15 +45,9 @@ const DashBoard = () => {
     /*history.push(`/dashboard`)*/
   }
 
-  const handleDataBases = () => {
-    setPage('dataBase')
+  const handleWhitelist = () => {
+    setPage('Whitelist')
     //history.push(`/dashboard`)
-  }
-
-  const handleUsers = () => {
-    setPage('users')
-    //history.push(`/dashboard`)
-    
   }
   const handleLogs = () => {
     setPage('logs')
@@ -80,8 +74,7 @@ const DashBoard = () => {
         open = {open}
         handleDrawerOpen={handleDrawerOpen}
         handleDrawerClose={handleDrawerClose}
-        handleDataBases={handleDataBases}
-        handleUsers={handleUsers}
+        handleWhitelist={handleWhitelist}
         handleLogs={handleLogs}
       />
 

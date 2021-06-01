@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Users = () => {
+const Whitelist = () => {
+    
     return (<div>
         <p>
-            USERS!
+            Whitelist!
         </p>
     </div>   );
 }
  
-export default Users;
+export default Whitelist;

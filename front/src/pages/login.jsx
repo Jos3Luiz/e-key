@@ -68,12 +68,9 @@ const Login = () => {
           <LockOutlined />
         </Avatar>
         <Typography component="h1" variant="h5">
-          SCRUDA
+          E-Key
         </Typography>
-        <Typography component="p">
-          System to Create, Register, Update, Drop and Alter data and tables in a relational database.
-
-        </Typography>
+        
         <form className={classes.form} noValidate>
           <TextField
             onChange={handleInputUser}
