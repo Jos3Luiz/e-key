@@ -72,7 +72,7 @@ const TopBar = ({open,handleDrawerOpen,handleDrawerClose,goDashboard,handleExit,
         <Fab 
           fullWidth
           variant="contained"
-          color="secondary"
+          color="logo"
           className={classes.logo}
           onClick={goDashboard}
           >

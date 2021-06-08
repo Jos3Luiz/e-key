@@ -1,0 +1,23 @@
+https://0l3pomurwh.execute-api.us-east-1.amazonaws.com/dev/listDevices
+0	
+uid	1506585250
+name	"joseLuiz"
+status	2
+createdAt	1620216165
+accesses	[]
+_________________________________________
+
+https://0l3pomurwh.execute-api.us-east-1.amazonaws.com/dev/getStatus
+message	"Internal server error"
+_________________________________________
+
+https://0l3pomurwh.execute-api.us-east-1.amazonaws.com/dev/register
+ message	"Missing Authentication Token"
+___________________________________________
+
+https://0l3pomurwh.execute-api.us-east-1.amazonaws.com/dev/remove
+message	"Missing Authentication Token"
+___________________________________________
+
+https://0l3pomurwh.execute-api.us-east-1.amazonaws.com/dev/setStatus
+message	"Missing Authentication Token"
