@@ -1,8 +1,10 @@
-import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Collapse, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, makeStyles, Slide, Typography } from '@material-ui/core';
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Dialog, DialogActions
+  , DialogContent, DialogContentText, DialogTitle, FormControl, IconButton, InputLabel,
+  makeStyles, MenuItem, Select, Slide, Typography } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
-import { Cancel, DoneOutline, Edit, ExpandMore, Favorite, Info, MoreVert, Share } from '@material-ui/icons';
+import { Cancel, Close, DoneOutline, Edit} from '@material-ui/icons';
 import React, { forwardRef, useState } from 'react';
-import clsx from 'clsx';
+
 
 //pending,allowed,forbidden
 const colors =["#d9d9d9","#80ffaa","#ff8080"];
@@ -19,6 +21,19 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[300],
   },
+  formControl: {
+    marginTop: theme.spacing(2),
+    minWidth: 120,
+  },
+  formControlLabel: {
+    marginTop: theme.spacing(1),
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: 'auto',
+    width: 'fit-content',
+  },
 }))
 
 const Transition = forwardRef(function Transition(props, ref) {
@@ -27,15 +42,30 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
+  const [OpenCancel, setOpenCancel] = useState(false);
+  const [OpenEdit, setOpenEdit] = useState(false);
+  const [state, setState] = useState(permissionState)
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpenCancel = () => {
+    setOpenCancel(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseCancel = () => {
+    setOpenCancel(false);
   };
+
+  const handleClickOpenEdit = () => {
+    setOpenEdit(true);
+  };
+
+  const handleCloseEdit = () => {
+    setOpenEdit(false);
+  };
+
+  const handleStateChange = (event) => {
+    setState(event.target.value);
+  };
+
 
   // multiplied by 1000 so that the argument is in milliseconds, not seconds.
   let date = new Date(createdTimestamp * 1000);
@@ -44,7 +74,7 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
 
 
   return (
-    <Card className={classes.root} style={{backgroundColor: colors[permissionState]}}>
+    <Card className={classes.root} style={{backgroundColor: colors[state]}}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
@@ -52,9 +82,48 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
+          <React.Fragment>
+            <IconButton aria-label="settings" onClick={handleClickOpenEdit}>
             <Edit />
           </IconButton>
+          <Dialog
+            open={OpenEdit}
+            onClose={handleCloseEdit}
+            aria-labelledby="state-dialog-title"
+          >
+          <DialogTitle id="state-dialog-title">Edit State to User</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              You can set the state to user.
+            </DialogContentText>
+            <form className={classes.form} noValidate>
+              <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="state">state</InputLabel>
+              <Select
+                autoFocus
+                value={state}
+                onChange={handleStateChange}
+                inputProps={{
+                  name: 'state',
+                  id: 'state',
+                }}
+              >
+                <MenuItem value="0">A definir</MenuItem>
+                <MenuItem value="1">Permitido</MenuItem>
+                <MenuItem value="2">Bloqueado</MenuItem>
+              </Select>
+            </FormControl>
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseEdit} color="primary">
+            <Close />
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+          </React.Fragment>
+          
         }
         title={name}
         subheader={formattedTime}
@@ -65,17 +134,15 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="show info">
-          <Info />
-        </IconButton>
-        <IconButton onClick ={handleClickOpen} aria-label="drop">
+
+        <IconButton onClick ={handleClickOpenCancel} aria-label="drop">
           <Cancel/>
         </IconButton>
         <Dialog
-          open={open}
+          open={OpenCancel}
           TransitionComponent={Transition}
           keepMounted
-          onClose={handleClose}
+          onClose={handleCloseCancel}
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
@@ -86,15 +153,13 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleCloseCancel} color="primary">
               <Cancel/>
             </Button>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleCloseCancel} color="primary">
               <DoneOutline />
             </Button>
           </DialogActions>
-
-
         </Dialog>
       </CardActions>
       

@@ -25,7 +25,7 @@ function App() {
         paper: '#BBB',
       },
       text: {
-        primary: '#074585'
+        primary: '#000'
       },
       logo: {
         default: '#BBB',
