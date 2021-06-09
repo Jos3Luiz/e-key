@@ -7,7 +7,7 @@ class Api {
     static async getAllDevices(){
 
         let result = await axios.get(baseurl+"listDevices");
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, 100));
 
         return result.data;
     }

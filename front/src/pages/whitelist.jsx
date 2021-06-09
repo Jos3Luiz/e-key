@@ -1,4 +1,4 @@
-import React, { useState  } from 'react';
+import React, { useEffect, useState  } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Toolbar, Typography } from '@material-ui/core';
 import Usuarios from '../components/usuarios';
@@ -18,10 +18,11 @@ const useStyles = makeStyles({
 const Whitelist = () => {
 	const classes = useStyles();
   const [rows,setRows] = useState([]);
-  Api.getAllDevices()
-  .then((res)=>{
-    setRows(res);
-  })
+  useEffect(async ()=>{
+      setRows(await Api.getAllDevices())
+  },[])
+
+  
   
 
 

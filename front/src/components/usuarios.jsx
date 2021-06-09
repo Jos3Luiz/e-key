@@ -4,8 +4,9 @@ import { Cancel, Edit, ExpandMore, Favorite, Info, MoreVert, Share } from '@mate
 import React, { useState } from 'react';
 import clsx from 'clsx';
 
-const forbidden = "#ff8080";
-const allowed = "#80ffaa";
+//pending,allowed,forbidden
+const colors =["#d9d9d9","#80ffaa","#ff8080"];
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,17 +23,17 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Usuarios = ({name,uid,createdTimestamp,permissionState}) => {
+const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
   const classes = useStyles();
 
   // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-  var date = new Date(createdTimestamp * 1000);
-
-  var formattedTime ="Created at " + date.toLocaleDateString("en-US");
+  let date = new Date(createdTimestamp * 1000);
+  let formattedTime ="Created at " + date.toLocaleDateString("en-US");
+    
 
 
   return (
-    <Card className={classes.root} style={{backgroundColor: allowed}}>
+    <Card className={classes.root} style={{backgroundColor: "red"}}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
