@@ -1,4 +1,4 @@
-import { Avatar, Card, CardActions, CardContent, CardHeader, Collapse, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, makeStyles, Slide, Typography } from '@material-ui/core';
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Collapse, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, makeStyles, Slide, Typography } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
 import { Cancel, DoneOutline, Edit, ExpandMore, Favorite, Info, MoreVert, Share } from '@material-ui/icons';
 import React, { forwardRef, useState } from 'react';
@@ -64,10 +64,10 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState}) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="show info">
           <Info />
         </IconButton>
-        <IconButton onClick ={handleClickOpen} aria-label="share">
+        <IconButton onClick ={handleClickOpen} aria-label="drop">
           <Cancel/>
         </IconButton>
         <Dialog
@@ -81,17 +81,16 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState}) => {
           <DialogTitle id="alert-dialog-slide-title">{"Do you want to  eliminate the user? "}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
+              Do really you want to eliminate the user?
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <iconButton onClick={handleClose} color="primary">
+            <Button onClick={handleClose} color="primary">
               <Cancel/>
-            </iconButton>
-            <iconButton onClick={handleClose} color="primary">
+            </Button>
+            <Button onClick={handleClose} color="primary">
               <DoneOutline />
-            </iconButton>
+            </Button>
           </DialogActions>
 
 
