@@ -1,7 +1,7 @@
 import { Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles, useTheme } from '@material-ui/core';
 import React from 'react';
 import clsx from 'clsx';
-import { ChevronLeft, ChevronRight, ListAlt, People, Storage } from '@material-ui/icons';
+import { ChevronLeft, ChevronRight, ListAlt, People} from '@material-ui/icons';
 
 const drawerWidth = 240;
 
