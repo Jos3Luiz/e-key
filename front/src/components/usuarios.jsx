@@ -1,8 +1,10 @@
-import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Collapse, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, IconButton, InputLabel, makeStyles, MenuItem, Select, Slide, Typography } from '@material-ui/core';
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Dialog, DialogActions
+  , DialogContent, DialogContentText, DialogTitle, FormControl, IconButton, InputLabel,
+  makeStyles, MenuItem, Select, Slide, Typography } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
-import { Cancel, Close, DoneOutline, Edit, ExpandMore, Favorite, Info, MoreVert, Share } from '@material-ui/icons';
+import { Cancel, Close, DoneOutline, Edit} from '@material-ui/icons';
 import React, { forwardRef, useState } from 'react';
-import clsx from 'clsx';
+
 
 //pending,allowed,forbidden
 const colors =["#d9d9d9","#80ffaa","#ff8080"];
@@ -44,7 +46,6 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
   const [OpenEdit, setOpenEdit] = useState(false);
   const [state, setState] = useState(permissionState)
 
-
   const handleClickOpenCancel = () => {
     setOpenCancel(true);
   };
@@ -64,7 +65,6 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
   const handleStateChange = (event) => {
     setState(event.target.value);
   };
-
 
 
   // multiplied by 1000 so that the argument is in milliseconds, not seconds.
@@ -108,9 +108,9 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
                   id: 'state',
                 }}
               >
-                <MenuItem value="0">0</MenuItem>
-                <MenuItem value="1">1</MenuItem>
-                <MenuItem value="2">2</MenuItem>
+                <MenuItem value="0">A definir</MenuItem>
+                <MenuItem value="1">Permitido</MenuItem>
+                <MenuItem value="2">Bloqueado</MenuItem>
               </Select>
             </FormControl>
           </form>
@@ -134,12 +134,6 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-
-
-        <IconButton aria-label="show info">
-          <Info />
-        </IconButton>
-
 
         <IconButton onClick ={handleClickOpenCancel} aria-label="drop">
           <Cancel/>

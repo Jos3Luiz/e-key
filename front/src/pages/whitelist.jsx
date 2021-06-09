@@ -1,22 +1,10 @@
 import React, { useEffect, useState  } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Toolbar, Typography } from '@material-ui/core';
 import Usuarios from '../components/usuarios';
 import Api from '../API/routes'
 
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-		marginTop: 10,
-  }
-});
-
-
-
-
 const Whitelist = () => {
-	const classes = useStyles();
   const [rows,setRows] = useState([]);
   
   useEffect(()=>{
@@ -28,7 +16,7 @@ const Whitelist = () => {
 
 
 	return (
-    <Box p={8}>
+    <Box paddingLeft={5}>
           <Toolbar />
           < Typography
             variant='h5'
