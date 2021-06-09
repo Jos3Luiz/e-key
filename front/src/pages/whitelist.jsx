@@ -26,10 +26,6 @@ const Whitelist = () => {
       fetchRows()
   },[])
 
-  
-  
-
-
 
 	return (
     <Box p={8}>
