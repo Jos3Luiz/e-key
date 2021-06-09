@@ -44,7 +44,7 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
 
 
   return (
-    <Card className={classes.root} style={{backgroundColor: "red"}}>
+    <Card className={classes.root} style={{backgroundColor: colors[permissionState]}}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
