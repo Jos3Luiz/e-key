@@ -41,7 +41,7 @@ const Whitelist = () => {
               rows.map((item,index) => (
                 <Grid item lg={3} md={4} sm={6} xs={12}>
                   <Box>
-                    <Usuarios name= {item.name} data = {item.uid}/>
+                    <Usuarios name= {item.name} uid = {item.uid} createdTimestamp = {item.createdAt} permissionState={item.status}/>
                   </Box>
                 </Grid>
               ))
