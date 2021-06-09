@@ -1,7 +1,7 @@
-import { Avatar, Card, CardActions, CardContent, CardHeader, Collapse, IconButton, makeStyles, Typography } from '@material-ui/core';
+import { Avatar, Card, CardActions, CardContent, CardHeader, Collapse, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, makeStyles, Slide, Typography } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
-import { Cancel, Edit, ExpandMore, Favorite, Info, MoreVert, Share } from '@material-ui/icons';
-import React, { useState } from 'react';
+import { Cancel, DoneOutline, Edit, ExpandMore, Favorite, Info, MoreVert, Share } from '@material-ui/icons';
+import React, { forwardRef, useState } from 'react';
 import clsx from 'clsx';
 
 
@@ -18,10 +18,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+})
 
 const Usuarios = ({name,data}) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
 
   return (
@@ -49,9 +60,35 @@ const Usuarios = ({name,data}) => {
         <IconButton aria-label="add to favorites">
           <Info />
         </IconButton>
-        <IconButton aria-label="share">
-          <Cancel />
+        <IconButton onClick ={handleClickOpen} aria-label="share">
+          <Cancel/>
         </IconButton>
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle id="alert-dialog-slide-title">{"Do you want to  eliminate the user? "}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              Let Google help apps determine location. This means sending anonymous location data to
+              Google, even when no apps are running.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <iconButton onClick={handleClose} color="primary">
+              <Cancel/>
+            </iconButton>
+            <iconButton onClick={handleClose} color="primary">
+              <DoneOutline />
+            </iconButton>
+          </DialogActions>
+
+
+        </Dialog>
       </CardActions>
       
     </Card>
