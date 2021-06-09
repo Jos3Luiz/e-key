@@ -4,6 +4,8 @@ import { Cancel, DoneOutline, Edit, ExpandMore, Favorite, Info, MoreVert, Share 
 import React, { forwardRef, useState } from 'react';
 import clsx from 'clsx';
 
+const forbidden = "#ff8080";
+const allowed = "#80ffaa";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +24,7 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 })
 
-const Usuarios = ({name,data}) => {
+const Usuarios = ({name,uid,createdTimestamp,permissionState}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -34,13 +36,18 @@ const Usuarios = ({name,data}) => {
     setOpen(false);
   };
 
+  // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+  var date = new Date(createdTimestamp * 1000);
+
+  var formattedTime ="Created at " + date.toLocaleDateString("en-US");
+
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{backgroundColor: allowed}}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            {name[0]}
           </Avatar>
         }
         action={
@@ -49,11 +56,11 @@ const Usuarios = ({name,data}) => {
           </IconButton>
         }
         title={name}
-        subheader="criete in September 14, 2016"
+        subheader={formattedTime}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {data}
+          UID: {uid.toString(16)}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
