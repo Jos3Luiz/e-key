@@ -4,6 +4,7 @@ import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Dialog, Dia
 import { red } from '@material-ui/core/colors';
 import { Cancel, Close, DoneOutline, Edit} from '@material-ui/icons';
 import React, { forwardRef, useState } from 'react';
+import Api from '../API/routes'
 
 
 //pending,allowed,forbidden
@@ -54,6 +55,16 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
     setOpenCancel(false);
   };
 
+  const deleteUser = (uid) => {
+    console.log("deleting", uid)
+    Api.deleteUser(uid)
+  };
+
+  const alterUser = (uid,state) => {
+    console.log("altering", uid,state)
+    Api.alterPermission(uid,state)
+  };
+
   const handleClickOpenEdit = () => {
     setOpenEdit(true);
   };
@@ -64,6 +75,7 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
 
   const handleStateChange = (event) => {
     setState(event.target.value);
+    //send authorize to backend
   };
 
 
@@ -116,7 +128,7 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseEdit} color="primary">
+          <Button onClick={(event) =>{handleCloseEdit(event);alterUser(uid,state)}} color="primary">
             <Close />
           </Button>
         </DialogActions>
@@ -156,7 +168,7 @@ const Usuarios = ({name,uid,createdTimestamp,permissionState=0}) => {
             <Button onClick={handleCloseCancel} color="primary">
               <Cancel/>
             </Button>
-            <Button onClick={handleCloseCancel} color="primary">
+            <Button onClick={(event) => {handleCloseCancel(event);deleteUser(uid); }}  color="primary">
               <DoneOutline />
             </Button>
           </DialogActions>

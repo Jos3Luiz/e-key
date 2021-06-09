@@ -22,16 +22,27 @@ class Api {
           logList.push({name:user.name,uid:user.uid,date:user.accesses[j],device:0});
         }
       }
-      logList=[];
-      logList.push({name:"esoj2",uid:0,date:1506585250,device:0});
-      logList.push({name:"esoj2",uid:10,date:1506585250,device:0});
-      logList.push({name:"esoj",uid:10,date:1506585251,device:0});
 
       return logList;
+    }
 
-
+    static alterPermission(uid,status){
+      let data ={"uid":uid,"status":status}
+      const header = {
+        headers: {'content-type': 'text/json'}
+      }
+      axios.post(baseurl+"setStatus",data,header);
       
   }
+
+  static deleteUser(uid){
+    let data ={"uid":uid}
+    const header = {
+      headers: {'content-type': 'text/json'}
+    }
+    axios.post(baseurl+"remove",data,header);
+    
+}
 
 }
 
