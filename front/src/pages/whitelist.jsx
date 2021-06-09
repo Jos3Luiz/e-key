@@ -18,8 +18,12 @@ const useStyles = makeStyles({
 const Whitelist = () => {
 	const classes = useStyles();
   const [rows,setRows] = useState([]);
-  useEffect(async ()=>{
-      setRows(await Api.getAllDevices())
+  
+  useEffect(()=>{
+      async function fetchRows() {
+        setRows(await Api.getAllDevices())
+      }
+      fetchRows()
   },[])
 
   
