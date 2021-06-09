@@ -1,28 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles, Table, TableBody, TableCell,TableContainer, TableHead, TablePagination, TableRow, TableSortLabel,Toolbar, Typography, Paper, Checkbox, IconButton, Tooltip} from '@material-ui/core/';
 import {Delete,FilterList} from '@material-ui/icons/';
+import Api from '../API/routes'
 
-function createData(name, uid, data, device) {
-    return {name, uid, data, device };
+function intToDate(timestamp){
+  const options = { year: 'numeric', month: 'numeric', day: 'numeric',hour:'numeric',minute:'numeric',second:'numeric' };
+  let date = new Date(timestamp * 1000);
+  return date.toLocaleDateString("en-US",options);
 }
-
-const rows = [
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Donut', 452, 25.0, 51),
-  createData('Eclair', 262, 16.0, 24),
-  createData('Frozen yoghurt', 159, 6.0, 24),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Honeycomb', 408, 3.2, 87),
-  createData('Ice cream sandwich', 237, 9.0, 37),
-  createData('Jelly Bean', 375, 0.0, 94),
-  createData('KitKat', 518, 26.0, 65),
-  createData('Lollipop', 392, 0.2, 98),
-  createData('Marshmallow', 318, 0, 81),
-  createData('Nougat', 360, 19.0, 9),
-  createData('Oreo', 437, 18.0, 63),
-];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -53,7 +40,7 @@ function stableSort(array, comparator) {
 const headCells = [
   { id: 'name', numeric: false, disablePadding: true, label: 'names' },
   { id: 'uid', numeric: true, disablePadding: false, label: 'uid' },
-  { id: 'data', numeric: true, disablePadding: false, label: 'data' },
+  { id: 'date', numeric: true, disablePadding: false, label: 'date' },
   { id: 'device', numeric: true, disablePadding: false, label: 'device' },
 ];
 
@@ -204,6 +191,17 @@ const Logs = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
 
+    const [rows,setRows] = useState([]);
+    useEffect(()=>{
+      async function fetchRows() {
+        setRows(await Api.getLogsByDate())
+      }
+      fetchRows()
+    },[])
+
+
+    
+
     const handleRequestSort = (event, property) => {
       const isAsc = orderBy === property && order === 'asc';
       setOrder(isAsc ? 'desc' : 'asc');
@@ -253,6 +251,7 @@ const Logs = () => {
     
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
     
+
     
     return ( 
         <div className={classes.root}>
@@ -300,7 +299,7 @@ const Logs = () => {
                           {row.name}
                         </TableCell>
                         <TableCell align="right" >{row.uid}</TableCell>
-                        <TableCell align="right">{row.data}</TableCell>
+                        <TableCell align="right">{intToDate(row.date)}</TableCell>
                         <TableCell align="right">{row.device}</TableCell>
                       </TableRow>
                     );

@@ -27,8 +27,8 @@ class Device:
         self.createdAt = int(createdAt)
         self.accesses = accesses
 
-    def addAccess(self,logObject):
-        self.accesses.append(logObject)
+    def addAccess(self,timestamp):
+        self.accesses.append(timestamp)
     
     def serialize(self):
         return {
@@ -36,7 +36,7 @@ class Device:
                 'name': self.name,
                 'status': self.status,
                 'createdAt': self.createdAt,
-                'accesses': [LogObject.serialize(i) for i in self.accesses]
+                'accesses': [int(i) for i in self.accesses]
             }
     def display(self):
         return print(self.serialize())
@@ -50,35 +50,8 @@ class Device:
             name=str(objectData["name"]),
             status=int(objectData["status"]),
             createdAt=int(objectData["createdAt"]),
-            accesses=[LogObject.unserialize(i) for i in objectData["accesses"]]
+            accesses=[int(i) for i in objectData["accesses"]]
         )
-
-
-
-class LogObject:
-    def __init__(self,timestamp,direction,idDevice=0):
-        self.timestamp=int(timestamp)
-        self.idDevice=idDevice
-        self.direction=direction
-
-    def serialize(self):
-        return {
-            "timestamp":self.timestamp,
-            "idDevice":self.idDevice,
-            "direction":self.direction
-        }
-
-    @staticmethod
-    def unserialize(objectData):
-        return LogObject(
-            timestamp=int(objectData["timestamp"]),
-            direction=int(objectData["direction"]),
-            idDevice=int(objectData["idDevice"])
-
-        )
-
-    def display(self):
-        return print(self.serialize())
 
 
 class Device_table_DB:
@@ -105,9 +78,9 @@ class Device_table_DB:
         response = self.table.delete_item(Key={"uid":uid})
         return response
 
-    def addAccess(self,uid,logObject):
+    def addAccess(self,uid):
         device = self.read_device(uid)
-        device.addAccess(logObject)
+        device.addAccess(int(time.time()))
         response = self.table.put_item(Item=device.serialize())
         return response
 
@@ -122,14 +95,8 @@ if __name__ == '__main__':
     cursor = Device_table_DB()
     cursor.register_device(0,"esoj")
     print("inserido")
-    log=LogObject(time.time(),ENTRY)
-    d=cursor.addAccess(0,log)
+    d=cursor.addAccess(0)
     (cursor.read_device(0)).display()
 
-    log=LogObject(time.time(),ENTRY)
-    d=cursor.addAccess(0,log)
-    print(d)
-    print("lido novamente")
-    cursor.read_device(0).display()
 
     

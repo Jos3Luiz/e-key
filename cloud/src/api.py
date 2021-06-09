@@ -4,6 +4,7 @@ from database import *
 def getStatus(uid):
     cursor = Device_table_DB()
     device =  cursor.read_device(uid)
+    cursor.addAccess(uid)
     if device!=None:
         return device.serialize(),200
     else:

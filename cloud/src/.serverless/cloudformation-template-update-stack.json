@@ -218,7 +218,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/e-key/dev/1623208612837-2021-06-09T03:16:52.837Z/e-key.zip"
+          "S3Key": "serverless/e-key/dev/1623218301867-2021-06-09T05:58:21.867Z/e-key.zip"
         },
         "Handler": "lambdaHandler.getStatus_handler",
         "Runtime": "python3.8",
@@ -248,7 +248,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/e-key/dev/1623208612837-2021-06-09T03:16:52.837Z/e-key.zip"
+          "S3Key": "serverless/e-key/dev/1623218301867-2021-06-09T05:58:21.867Z/e-key.zip"
         },
         "Handler": "lambdaHandler.listDevices_handler",
         "Runtime": "python3.8",
@@ -278,7 +278,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/e-key/dev/1623208612837-2021-06-09T03:16:52.837Z/e-key.zip"
+          "S3Key": "serverless/e-key/dev/1623218301867-2021-06-09T05:58:21.867Z/e-key.zip"
         },
         "Handler": "lambdaHandler.register_handler",
         "Runtime": "python3.8",
@@ -308,7 +308,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/e-key/dev/1623208612837-2021-06-09T03:16:52.837Z/e-key.zip"
+          "S3Key": "serverless/e-key/dev/1623218301867-2021-06-09T05:58:21.867Z/e-key.zip"
         },
         "Handler": "lambdaHandler.remove_handler",
         "Runtime": "python3.8",
@@ -338,7 +338,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/e-key/dev/1623208612837-2021-06-09T03:16:52.837Z/e-key.zip"
+          "S3Key": "serverless/e-key/dev/1623218301867-2021-06-09T05:58:21.867Z/e-key.zip"
         },
         "Handler": "lambdaHandler.setStatus_handler",
         "Runtime": "python3.8",
@@ -361,54 +361,54 @@
         "SetStatusLogGroup"
       ]
     },
-    "GetStatusLambdaVersionYSIAcm6HqDudmoHgS9FMndga1OFmjun4NVd1jTkjiI": {
+    "GetStatusLambdaVersion5ku6r3K2zlNSMZkkBVOm8SMCo8b7MId1vmTrOQqvqw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetStatusLambdaFunction"
         },
-        "CodeSha256": "tbfkHprz89xaKHfGkxtDc/Mkvl2ZWw/fPHuUDCCH1tM="
+        "CodeSha256": "GOc+IOt3cChJ/i8bjEaoaPd4i1kSGMynkn/r4+40M4s="
       }
     },
-    "ListDevicesLambdaVersiondmpfTOVipb9fiHXN0wXOXlQtJJGcyI431BSk4C1p8": {
+    "ListDevicesLambdaVersionJQtIuwQx0FUwPEgmc97CiUDv1d52oEjHuRpD4rLhG4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ListDevicesLambdaFunction"
         },
-        "CodeSha256": "tbfkHprz89xaKHfGkxtDc/Mkvl2ZWw/fPHuUDCCH1tM="
+        "CodeSha256": "GOc+IOt3cChJ/i8bjEaoaPd4i1kSGMynkn/r4+40M4s="
       }
     },
-    "RegisterLambdaVersionFwTs71GYNYAovd84EhUtTiWkskZmIo1isZNZ00MfhMI": {
+    "RegisterLambdaVersionYbdssAesONzHOuHv5fazYIZXUORni8D0y0JEegPcj60": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RegisterLambdaFunction"
         },
-        "CodeSha256": "tbfkHprz89xaKHfGkxtDc/Mkvl2ZWw/fPHuUDCCH1tM="
+        "CodeSha256": "GOc+IOt3cChJ/i8bjEaoaPd4i1kSGMynkn/r4+40M4s="
       }
     },
-    "RemoveLambdaVersion1Bzj7zFJI7dCVohv81Fv2yEagyMYPXKg6Y16DWTHk": {
+    "RemoveLambdaVersionG6LbL4R6syP6xTnyMecnwtBq3EQgTTRlQCyJDQN8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RemoveLambdaFunction"
         },
-        "CodeSha256": "tbfkHprz89xaKHfGkxtDc/Mkvl2ZWw/fPHuUDCCH1tM="
+        "CodeSha256": "GOc+IOt3cChJ/i8bjEaoaPd4i1kSGMynkn/r4+40M4s="
       }
     },
-    "SetStatusLambdaVersionYmxnA5SD1EHlopfviOg9llnRKxqkih4TyWis3yQCVw": {
+    "SetStatusLambdaVersiond14ZAaRygCg8YQSee9ZIGXjgbWgwc0JW4LhYFFtXlV0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SetStatusLambdaFunction"
         },
-        "CodeSha256": "tbfkHprz89xaKHfGkxtDc/Mkvl2ZWw/fPHuUDCCH1tM="
+        "CodeSha256": "GOc+IOt3cChJ/i8bjEaoaPd4i1kSGMynkn/r4+40M4s="
       }
     },
     "ApiGatewayRestApi": {
@@ -939,7 +939,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1623208611614": {
+    "ApiGatewayDeployment1623218300069": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1158,7 +1158,7 @@
     "GetStatusLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetStatusLambdaVersionYSIAcm6HqDudmoHgS9FMndga1OFmjun4NVd1jTkjiI"
+        "Ref": "GetStatusLambdaVersion5ku6r3K2zlNSMZkkBVOm8SMCo8b7MId1vmTrOQqvqw"
       },
       "Export": {
         "Name": "sls-e-key-dev-GetStatusLambdaFunctionQualifiedArn"
@@ -1167,7 +1167,7 @@
     "ListDevicesLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ListDevicesLambdaVersiondmpfTOVipb9fiHXN0wXOXlQtJJGcyI431BSk4C1p8"
+        "Ref": "ListDevicesLambdaVersionJQtIuwQx0FUwPEgmc97CiUDv1d52oEjHuRpD4rLhG4"
       },
       "Export": {
         "Name": "sls-e-key-dev-ListDevicesLambdaFunctionQualifiedArn"
@@ -1176,7 +1176,7 @@
     "RegisterLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RegisterLambdaVersionFwTs71GYNYAovd84EhUtTiWkskZmIo1isZNZ00MfhMI"
+        "Ref": "RegisterLambdaVersionYbdssAesONzHOuHv5fazYIZXUORni8D0y0JEegPcj60"
       },
       "Export": {
         "Name": "sls-e-key-dev-RegisterLambdaFunctionQualifiedArn"
@@ -1185,7 +1185,7 @@
     "RemoveLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RemoveLambdaVersion1Bzj7zFJI7dCVohv81Fv2yEagyMYPXKg6Y16DWTHk"
+        "Ref": "RemoveLambdaVersionG6LbL4R6syP6xTnyMecnwtBq3EQgTTRlQCyJDQN8"
       },
       "Export": {
         "Name": "sls-e-key-dev-RemoveLambdaFunctionQualifiedArn"
@@ -1194,7 +1194,7 @@
     "SetStatusLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SetStatusLambdaVersionYmxnA5SD1EHlopfviOg9llnRKxqkih4TyWis3yQCVw"
+        "Ref": "SetStatusLambdaVersiond14ZAaRygCg8YQSee9ZIGXjgbWgwc0JW4LhYFFtXlV0"
       },
       "Export": {
         "Name": "sls-e-key-dev-SetStatusLambdaFunctionQualifiedArn"
