@@ -1,7 +1,7 @@
 import { Avatar, Card, CardActions, CardContent, CardHeader, Collapse, IconButton, makeStyles, Typography } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
-import { ExpandMore, Favorite, MoreVert, Share } from '@material-ui/icons';
-import React from 'react';
+import { Cancel, Edit, ExpandMore, Favorite, Info, MoreVert, Share } from '@material-ui/icons';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 
 
@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const Usuarios = () => {
+
+const Usuarios = ({name,data}) => {
   const classes = useStyles();
 
-  
 
   return (
     <Card className={classes.root}>
@@ -34,23 +34,23 @@ const Usuarios = () => {
         }
         action={
           <IconButton aria-label="settings">
-            <MoreVert />
+            <Edit />
           </IconButton>
         }
-        title="Usuario"
+        title={name}
         subheader="criete in September 14, 2016"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          DADOS DO USUARIO?
+          {data}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <Favorite />
+          <Info />
         </IconButton>
         <IconButton aria-label="share">
-          <Share />
+          <Cancel />
         </IconButton>
       </CardActions>
       

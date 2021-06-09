@@ -3,33 +3,32 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Toolbar, Typography } from '@material-ui/core';
 import Usuarios from '../components/usuarios';
 
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
+function createData(name, data) {
+  return { name, data};
 }
 
 const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
-  createData('China', 'CN', 1403500365, 9596961),
-  createData('Italy', 'IT', 60483973, 301340),
-  createData('United States', 'US', 327167434, 9833520),
-  createData('Canada', 'CA', 37602103, 9984670),
-  createData('Australia', 'AU', 25475400, 7692024),
-  createData('Germany', 'DE', 83019200, 357578),
-  createData('Ireland', 'IE', 4857000, 70273),
-  createData('Mexico', 'MX', 126577691, 1972550),
-  createData('Japan', 'JP', 126317000, 377973),
-  createData('France', 'FR', 67022000, 640679),
-  createData('United Kingdom', 'GB', 67545757, 242495),
-  createData('Russia', 'RU', 146793744, 17098246),
-  createData('Nigeria', 'NG', 200962417, 923768),
-  createData('Brazil', 'BR', 210147125, 8515767)
+  createData('India', 'INAAAAAAAAAAAA' ),
+  createData('China', 'CNNM'),
+  createData('Italy', 'ITAAAAAAA'),
+  createData('United States', 'USAAAAAA'),
+  createData('Canada', 'CAAAA'),
+  createData('Australia', 'AUDDD'),
+  createData('Germany', 'DEEEE'),
+  createData('Ireland', 'I'),
+  createData('Mexico', 'MXSSS'),
+  createData('Japan', 'JPD'),
+  createData('France', 'FRA'),
+  createData('United Kingdom', 'GB'),
+  createData('Russia', 'RU' ),
+  createData('Nigeria', 'NG'),
+  createData('Brazil', 'BR')
 ];
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
-		marginTop: 50,
+		marginTop: 10,
   }
 });
 
@@ -54,7 +53,7 @@ const Whitelist = () => {
               rows.map((item,index) => (
                 <Grid item lg={3} md={4} sm={6} xs={12}>
                   <Box>
-                    <Usuarios/>
+                    <Usuarios name= {item.name} data = {item.data}/>
                   </Box>
                 </Grid>
               ))
